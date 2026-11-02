@@ -14,7 +14,7 @@
 <rect x="120.00" y="300.00" width="374.00" height="770.00" fill="#e7eadf" stroke="#1a1a1a" stroke-width="1.6" opacity="1" />
 <rect x="128.80" y="308.80" width="356.40" height="360.80" fill="#b8c8aa" stroke="none" stroke-width="1" opacity="1" />
 <rect x="387.30" y="674.00" width="95.70" height="396.00" fill="#d5cfc4" stroke="none" stroke-width="1" opacity="1" />
-<rect x="190.40" y="946.80" width="189.20" height="114.40" fill="#d5cfc4" stroke="none" stroke-width="1" opacity="1" />
+<rect x="128.80" y="942.40" width="253.00" height="118.80" fill="#b8c8aa" stroke="none" stroke-width="1" opacity="1" />
 <rect x="186.00" y="674.00" width="198.00" height="264.00" fill="#f3efe6" stroke="#1a1a1a" stroke-width="1.8" opacity="1" />
 <rect x="186.00" y="674.00" width="198.00" height="132.00" fill="#d9d3c8" stroke="none" stroke-width="1" opacity="0.35" />
 <rect x="187.10" y="675.10" width="195.80" height="129.80" fill="none" stroke="#6e4a32" stroke-width="0.8" opacity="1" stroke-dasharray="4 3"/>
@@ -32,14 +32,21 @@
 <line x1="466.50" y1="894.00" x2="389.50" y2="762.00" stroke="#1a1a1a" stroke-width="0.5" stroke-linecap="butt" stroke-dasharray="3 3"/>
 <text x="428.00" y="828.00" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">НАВЕС</text>
 <text x="428.00" y="840.10" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">3,5 × 6,0</text>
-<rect x="197.00" y="1013.90" width="96.80" height="40.70" fill="#c5cdd4" stroke="#6a737a" stroke-width="0.9" opacity="1" />
-<rect x="212.40" y="1017.86" width="52.80" height="32.78" fill="#dfe5ea" stroke="#6a737a" stroke-width="0.6" opacity="1" />
-<rect x="300.40" y="1013.90" width="96.80" height="40.70" fill="#c5cdd4" stroke="#6a737a" stroke-width="0.9" opacity="1" />
-<rect x="315.80" y="1017.86" width="52.80" height="32.78" fill="#dfe5ea" stroke="#6a737a" stroke-width="0.6" opacity="1" />
+<rect x="135.40" y="963.30" width="145.20" height="81.40" fill="#d9d4c8" stroke="#1a1a1a" stroke-width="0.7" opacity="1" />
+<rect x="140.90" y="973.20" width="132.00" height="66.00" fill="#6aa0b8" stroke="#4d7a8c" stroke-width="0.8" opacity="1" />
+<rect x="140.90" y="973.20" width="132.00" height="66.00" fill="none" stroke="#cfe4ee" stroke-width="0.4" opacity="1" />
+<rect x="277.30" y="999.60" width="12.10" height="35.20" fill="#c4a574" stroke="#1a1a1a" stroke-width="0.5" opacity="1" />
+<text x="206.90" y="1006.20" font-size="10" fill="white" text-anchor="middle" font-weight="600" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">БАССЕЙН</text>
+<text x="206.90" y="1018.30" font-size="9" fill="white" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">6,00 × 3,00</text>
+<line x1="140.90" y1="958.90" x2="272.90" y2="958.90" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
+<line x1="140.90" y1="960.88" x2="140.90" y2="956.92" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
+<line x1="272.90" y1="960.88" x2="272.90" y2="956.92" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
+<line x1="139.32" y1="960.48" x2="142.48" y2="957.32" stroke="#3d3d3d" stroke-width="0.7" stroke-linecap="butt"/>
+<line x1="271.32" y1="960.48" x2="274.48" y2="957.32" stroke="#3d3d3d" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="206.90" y="954.06" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">6,00</text>
 <rect x="393.90" y="839.00" width="114.40" height="41.80" fill="#c5cdd4" stroke="#6a737a" stroke-width="0.9" opacity="1" />
 <rect x="409.30" y="842.96" width="52.80" height="33.88" fill="#dfe5ea" stroke="#6a737a" stroke-width="0.6" opacity="1" />
-<text x="245.40" y="953.40" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">ПАРКОВКА ГОСТЕЙ</text>
-<rect x="264.10" y="938.00" width="30.80" height="17.60" fill="#c9c4ba" stroke="none" stroke-width="1" opacity="1" />
+<rect x="289.40" y="938.00" width="29.70" height="123.20" fill="#c9c4ba" stroke="none" stroke-width="1" opacity="1" />
 <rect x="267.40" y="935.36" width="24.20" height="2.64" fill="#1a1a1a" stroke="none" stroke-width="1" opacity="1" />
 <text x="279.50" y="925.90" font-size="9" fill="#1a1a1a" text-anchor="middle" font-weight="600" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">ВХОД</text>
 <rect x="194.80" y="569.50" width="92.40" height="7.70" fill="#6d8b5e" stroke="none" stroke-width="1" opacity="1" />
@@ -146,4 +153,6 @@
 <text x="324.60" y="225.20" font-size="9" fill="#3d3d3d" text-anchor="start" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">проезд</text>
 <rect x="366.40" y="220.80" width="12.10" height="8.80" fill="#b8c8aa" stroke="#1a1a1a" stroke-width="0.6" opacity="1" />
 <text x="406.00" y="225.20" font-size="9" fill="#3d3d3d" text-anchor="start" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">газон</text>
+<rect x="441.20" y="220.80" width="12.10" height="8.80" fill="#6aa0b8" stroke="#1a1a1a" stroke-width="0.6" opacity="1" />
+<text x="480.80" y="225.20" font-size="9" fill="#3d3d3d" text-anchor="start" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">бассейн</text>
 </svg>
