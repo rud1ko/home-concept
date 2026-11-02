@@ -27,15 +27,21 @@
 <line x1="318.00" y1="674.00" x2="318.00" y2="586.00" stroke="#b08d5a" stroke-width="0.4" stroke-linecap="butt"/>
 <line x1="340.00" y1="674.00" x2="340.00" y2="586.00" stroke="#b08d5a" stroke-width="0.4" stroke-linecap="butt"/>
 <line x1="362.00" y1="674.00" x2="362.00" y2="586.00" stroke="#b08d5a" stroke-width="0.4" stroke-linecap="butt"/>
-<rect x="389.50" y="762.00" width="77.00" height="132.00" fill="none" stroke="#1a1a1a" stroke-width="1.3" opacity="1" />
-<line x1="389.50" y1="894.00" x2="466.50" y2="762.00" stroke="#1a1a1a" stroke-width="0.5" stroke-linecap="butt" stroke-dasharray="3 3"/>
-<line x1="466.50" y1="894.00" x2="389.50" y2="762.00" stroke="#1a1a1a" stroke-width="0.5" stroke-linecap="butt" stroke-dasharray="3 3"/>
-<text x="428.00" y="828.00" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">НАВЕС</text>
-<text x="428.00" y="840.10" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">3,5 × 6,0</text>
+<rect x="417.00" y="762.00" width="70.40" height="132.00" fill="none" stroke="#1a1a1a" stroke-width="1.3" opacity="1" />
+<line x1="417.00" y1="894.00" x2="487.40" y2="762.00" stroke="#1a1a1a" stroke-width="0.5" stroke-linecap="butt" stroke-dasharray="3 3"/>
+<line x1="487.40" y1="894.00" x2="417.00" y2="762.00" stroke="#1a1a1a" stroke-width="0.5" stroke-linecap="butt" stroke-dasharray="3 3"/>
+<text x="452.20" y="749.90" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">НАВЕС</text>
+<text x="452.20" y="763.10" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">3,2 × 6,0</text>
+<line x1="384.00" y1="908.30" x2="417.00" y2="908.30" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
+<line x1="384.00" y1="910.28" x2="384.00" y2="906.32" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
+<line x1="417.00" y1="910.28" x2="417.00" y2="906.32" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
+<line x1="382.42" y1="909.88" x2="385.58" y2="906.72" stroke="#3d3d3d" stroke-width="0.7" stroke-linecap="butt"/>
+<line x1="415.42" y1="909.88" x2="418.58" y2="906.72" stroke="#3d3d3d" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="400.50" y="903.46" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">1,50</text>
 <rect x="135.40" y="963.30" width="145.20" height="81.40" fill="#d9d4c8" stroke="#1a1a1a" stroke-width="0.7" opacity="1" />
 <rect x="140.90" y="973.20" width="132.00" height="66.00" fill="#6aa0b8" stroke="#4d7a8c" stroke-width="0.8" opacity="1" />
 <rect x="140.90" y="973.20" width="132.00" height="66.00" fill="none" stroke="#cfe4ee" stroke-width="0.4" opacity="1" />
-<rect x="277.30" y="999.60" width="12.10" height="35.20" fill="#c4a574" stroke="#1a1a1a" stroke-width="0.5" opacity="1" />
+<rect x="140.90" y="938.00" width="132.00" height="35.20" fill="#c4a574" stroke="#1a1a1a" stroke-width="0.7" opacity="1" />
 <text x="206.90" y="1006.20" font-size="10" fill="white" text-anchor="middle" font-weight="600" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">БАССЕЙН</text>
 <text x="206.90" y="1018.30" font-size="9" fill="white" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">6,00 × 3,00</text>
 <line x1="140.90" y1="958.90" x2="272.90" y2="958.90" stroke="#3d3d3d" stroke-width="0.8" stroke-linecap="butt"/>
@@ -44,8 +50,8 @@
 <line x1="139.32" y1="960.48" x2="142.48" y2="957.32" stroke="#3d3d3d" stroke-width="0.7" stroke-linecap="butt"/>
 <line x1="271.32" y1="960.48" x2="274.48" y2="957.32" stroke="#3d3d3d" stroke-width="0.7" stroke-linecap="butt"/>
 <text x="206.90" y="954.06" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">6,00</text>
-<rect x="393.90" y="839.00" width="114.40" height="41.80" fill="#c5cdd4" stroke="#6a737a" stroke-width="0.9" opacity="1" />
-<rect x="409.30" y="842.96" width="52.80" height="33.88" fill="#dfe5ea" stroke="#6a737a" stroke-width="0.6" opacity="1" />
+<rect x="424.70" y="776.30" width="41.80" height="105.60" fill="#c5cdd4" stroke="#6a737a" stroke-width="0.9" opacity="1" />
+<rect x="429.72" y="815.37" width="31.77" height="47.52" fill="#dfe5ea" stroke="#6a737a" stroke-width="0.6" opacity="1" />
 <rect x="289.40" y="938.00" width="29.70" height="123.20" fill="#c9c4ba" stroke="none" stroke-width="1" opacity="1" />
 <rect x="267.40" y="935.36" width="24.20" height="2.64" fill="#1a1a1a" stroke="none" stroke-width="1" opacity="1" />
 <text x="279.50" y="925.90" font-size="9" fill="#1a1a1a" text-anchor="middle" font-weight="600" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">ВХОД</text>

@@ -211,7 +211,7 @@ class CAD:
 
     def car(self, x, y, w=4.4, d=1.85) -> None:
         self.rect(x, y, w, d, fill="#c5cdd4", stroke="#6a737a", sw=0.9)
-        self.rect(x + 0.7, y + 0.18, 2.4, d - 0.36, fill="#dfe5ea", stroke="#6a737a", sw=0.6)
+        self.rect(x + w * 0.12, y + d * 0.18, w * 0.76, d * 0.45, fill="#dfe5ea", stroke="#6a737a", sw=0.6)
 
     def tree(self, x, y, r=1.3) -> None:
         self.circle(x, y, r, fill="#9cba90", stroke="#6e8b63", sw=0.8)
@@ -253,21 +253,22 @@ def draw_site() -> str:
     cad.rect(3.0, 18.0, 9.0, 4.0, fill=WOOD, stroke=INK, sw=1.0)
     for i in range(1, 9):
         cad.line(3.0 + i, 18.0, 3.0 + i, 22.0, stroke="#b08d5a", sw=0.4)
-    # carport
-    cad.rect(12.25, 8.0, 3.5, 6.0, fill="none", stroke=INK, sw=1.3)
-    cad.line(12.25, 8.0, 15.75, 14.0, stroke=INK, sw=0.5, dash="3 3")
-    cad.line(15.75, 8.0, 12.25, 14.0, stroke=INK, sw=0.5, dash="3 3")
-    cad.text(14.0, 11.0, "НАВЕС", size=10, fill=DIM)
-    cad.text(14.0, 10.45, "3,5 × 6,0", size=9, fill=DIM)
+    # carport — detached, ~1,5 м зазор от восточной стены дома
+    cad.rect(13.50, 8.0, 3.2, 6.0, fill="none", stroke=INK, sw=1.3)
+    cad.line(13.50, 8.0, 16.70, 14.0, stroke=INK, sw=0.5, dash="3 3")
+    cad.line(16.70, 8.0, 13.50, 14.0, stroke=INK, sw=0.5, dash="3 3")
+    cad.text(15.1, 14.55, "НАВЕС", size=10, fill=DIM)
+    cad.text(15.1, 13.95, "3,2 × 6,0", size=9, fill=DIM)
+    cad.dim_h(12.0, 13.5, 7.35, "1,50")
     # pool 6.00 × 3.00 in front-left (fits in 6 m street setback)
     cad.rect(0.7, 1.15, 6.6, 3.7, fill="#d9d4c8", stroke=INK, sw=0.7)
     cad.rect(0.95, 1.4, 6.00, 3.00, fill="#6aa0b8", stroke="#4d7a8c", sw=0.8)
     cad.rect(0.95, 1.4, 6.00, 3.00, fill="none", stroke="#cfe4ee", sw=0.4)
-    cad.rect(7.15, 1.6, 0.55, 1.6, fill=WOOD, stroke=INK, sw=0.5)
+    cad.rect(0.95, 4.4, 6.00, 1.6, fill=WOOD, stroke=INK, sw=0.7)
     cad.text(3.95, 2.9, "БАССЕЙН", size=10, weight=600, fill="white")
     cad.text(3.95, 2.35, "6,00 × 3,00", size=9, fill="white")
     cad.dim_h(0.95, 6.95, 5.05, "6,00")
-    cad.car(12.45, 8.6, w=5.2, d=1.9)
+    cad.car(13.85, 8.55, w=1.90, d=4.80)
     # path to door
     cad.rect(7.7, 0.4, 1.35, 5.6, fill=CONC, stroke="none")
     # entrance mark
@@ -341,8 +342,9 @@ def walls_l1(cad: CAD) -> None:
     cad.opening(3.20, 0.45, 0.12, 0.90)       # office -> tambour
     cad.opening(5.08, 2.35, 0.12, 0.85)       # wc -> hall
     cad.opening(5.08, 3.92, 0.12, 1.16)       # living -> hall
-    cad.opening(5.08, 8.90, 0.12, 2.40)       # living -> kitchen
+    cad.opening(5.20, 8.70, 0.12, 2.60)       # living -> kitchen, проём 2,60
     cad.opening(5.45, 6.88, 0.90, 0.12)       # kitchen -> pantry
+    cad.opening(5.40, 5.20, 0.90, 0.12)       # hall -> pantry
     cad.opening(7.25, 5.20, 0.90, 0.12)       # hall -> tech
     cad.opening(8.80, 5.55, 0.20, 0.90)       # tech outdoor
 
@@ -351,12 +353,14 @@ def windows_l1(cad: CAD) -> None:
     cad.opening(3.70, 0.00, 1.10, 0.20)
     cad.window_h(0.70, 0.00, 1.80, 0.20)      # office south
     cad.window_h(6.40, 0.00, 1.40, 0.20)      # hall south
-    cad.window_h(0.70, 11.80, 4.00, 0.20)     # living north
-    cad.window_h(5.60, 11.80, 2.80, 0.20)     # kitchen north
+    cad.window_h(0.40, 11.80, 4.60, 0.20)     # living north — раздвижные
+    cad.window_h(5.30, 11.80, 3.30, 0.20)     # kitchen north — раздвижные
     cad.window_v(0.00, 4.40, 2.20, 0.20)      # living west
     cad.window_v(0.00, 8.40, 2.60, 0.20)      # living west garden
+    # камин на западной стене между окнами — как на визуализации гостиной
+    cad.rect(0.20, 6.70, 0.28, 1.55, fill="#3a3a3a", stroke=INK, sw=0.6)
     cad.window_v(8.80, 8.20, 2.40, 0.20)      # kitchen east
-    cad.window_v(8.80, 1.20, 1.80, 0.20)      # stair east
+    cad.window_v(8.80, 1.40, 1.40, 0.20)      # hall east, punched
     cad.opening(8.80, 5.55, 0.20, 0.90)
 
 
@@ -365,7 +369,8 @@ def doors_l1(cad: CAD) -> None:
     cad.door(5.08, 0.40, 0.90, 90, 1)         # tambour to hall
     cad.door(3.32, 0.45, 0.90, 90, -1)        # office
     cad.door(5.20, 2.35, 0.85, 90, -1)        # wc
-    cad.door(5.45, 7.00, 0.90, 0, 1)          # pantry
+    cad.door(5.45, 7.00, 0.90, 0, 1)          # pantry from kitchen
+    cad.door(5.40, 5.32, 0.90, 0, 1)          # pantry from hall
     cad.door(7.25, 5.32, 0.90, 0, 1)          # tech
 
 
@@ -420,6 +425,7 @@ def draw_floor1() -> str:
     cad.room_label(7.00, 4.35, "02", "Холл / лестница", "18,0 м²")
     cad.room_label(2.55, 7.3, "05", "Гостиная — столовая", "39,0 м²")
     cad.room_label(7.00, 10.0, "06", "Кухня", "17,3 м²")
+    cad.text(5.50, 9.95, "проём 2,60", size=8, fill=DIM, angle=90)
     cad.room_label(6.05, 6.05, "07", "Кладовая", "2,7 м²")
     cad.room_label(7.95, 6.05, "08", "Котельная", "2,8 м²")
     cad.dim_h(0, 9, -0.85, "9,00")
@@ -447,76 +453,67 @@ def draw_floor2() -> str:
     cad.wall(0.00, 0.20, 0.20, 11.60)
     cad.wall(8.80, 0.20, 0.20, 11.60)
     # interior
-    cad.wall(5.08, 0.20, 0.12, 11.60)
-    cad.wall(0.20, 3.88, 4.88, 0.12)   # bed2 | ensuite
-    cad.wall(0.20, 6.08, 4.88, 0.12)   # ensuite | master
-    cad.wall(2.50, 4.00, 0.12, 2.08)   # wardrobe | master bath
-    cad.wall(5.20, 6.20, 3.60, 0.12)   # hall | family bath
-    cad.wall(5.20, 8.08, 3.60, 0.12)   # bath | bed3
-    cad.wall(5.20, 4.70, 1.30, 0.12)   # laundry
-    cad.wall(6.50, 4.82, 0.12, 1.38)
-    # openings
-    cad.opening(5.08, 1.30, 0.12, 0.90)  # bed2
-    cad.opening(5.08, 7.40, 0.12, 0.95)  # master
-    cad.opening(5.08, 5.10, 0.12, 0.80)  # ensuite from hall? no - ensuite from master
-    cad.opening(1.10, 6.08, 0.90, 0.12)  # master -> wardrobe
-    cad.opening(3.20, 6.08, 0.90, 0.12)  # master -> bath
-    cad.opening(5.20, 6.20, 0.90, 0.12)  # hall -> family bath
-    cad.opening(5.20, 8.08, 0.90, 0.12)  # hall -> bed3
-    cad.opening(5.20, 5.00, 0.80, 0.12)  # laundry
+    cad.wall(5.08, 0.20, 0.12, 11.60)         # запад | восток
+    cad.wall(0.20, 3.88, 4.88, 0.12)          # спальня 2 | гардероб/с/у
+    cad.wall(0.20, 6.08, 4.88, 0.12)          # гардероб/с/у | мастер
+    cad.wall(2.50, 4.00, 0.12, 2.08)          # гардероб | мастер-с/у
+    cad.wall(6.38, 5.40, 0.12, 2.80)          # коридор | ванная
+    cad.wall(6.50, 5.40, 2.30, 0.12)          # холл | ванная (юг)
+    cad.wall(5.20, 8.20, 3.60, 0.12)          # коридор+ванная | спальня 3
+    # openings — все жилые из холла/коридора
+    cad.opening(5.08, 1.40, 0.12, 0.90)       # холл → спальня 2
+    cad.opening(5.08, 6.55, 0.12, 0.90)       # коридор → мастер
+    cad.opening(5.45, 8.20, 0.90, 0.12)       # коридор → спальня 3
+    cad.opening(6.38, 6.00, 0.12, 0.90)       # коридор → ванная
+    cad.opening(1.10, 6.08, 0.90, 0.12)       # мастер → гардероб
+    cad.opening(3.20, 6.08, 0.90, 0.12)       # мастер → мастер-с/у
     # windows
     cad.window_h(0.70, 0.00, 1.70, 0.20)
-    cad.window_h(2.80, 0.00, 1.70, 0.20)
-    cad.window_h(0.55, 11.80, 2.00, 0.20)
-    cad.window_h(2.80, 11.80, 2.00, 0.20)
-    cad.window_h(5.70, 11.80, 2.60, 0.20)
+    cad.window_h(5.30, 0.00, 1.20, 0.20)
+    cad.window_h(0.70, 11.80, 1.60, 0.20)
+    cad.window_h(3.70, 11.80, 1.60, 0.20)
+    cad.window_h(6.50, 11.80, 1.60, 0.20)
     cad.window_v(0.00, 0.70, 1.60, 0.20)
     cad.window_v(0.00, 7.20, 2.80, 0.20)
-    cad.window_v(8.80, 0.70, 2.40, 0.20)  # stair
-    cad.window_v(8.80, 6.50, 1.30, 0.20)
+    cad.window_v(8.80, 0.90, 1.40, 0.20)
     cad.window_v(8.80, 9.00, 2.20, 0.20)
-    # doors
-    cad.door(5.20, 1.30, 0.90, 90, -1)
-    cad.door(5.20, 7.40, 0.90, 90, -1)
-    cad.door(1.10, 6.20, 0.90, 0, 1)
-    cad.door(3.20, 6.20, 0.90, 0, 1)
-    cad.door(5.20, 6.32, 0.90, 0, 1)
-    cad.door(5.20, 8.20, 0.90, 0, 1)
+    # двери распахиваются в комнаты
+    cad.door(5.08, 1.40, 0.90, 90, 1)         # спальня 2
+    cad.door(5.08, 6.55, 0.90, 90, 1)         # мастер
+    cad.door(5.45, 8.32, 0.90, 0, 1)          # спальня 3
+    cad.door(6.50, 6.00, 0.90, 90, -1)        # ванная
+    cad.door(1.10, 6.08, 0.90, 0, -1)         # гардероб
+    cad.door(3.20, 6.08, 0.90, 0, -1)         # мастер-с/у
     # furniture
     cad.bed(1.35, 0.50, 1.80, 2.10)
     cad.bed(1.15, 8.55, 1.90, 2.20)
-    cad.bed(6.00, 9.00, 1.60, 2.00)
+    cad.bed(6.20, 8.70, 1.70, 2.00)
     cad.rect(0.40, 4.20, 1.90, 1.70, fill=FURN, stroke=FURN_S, sw=0.7)
     cad.text(1.35, 5.05, "шкафы", size=8, fill=DIM)
     cad.wc(4.35, 4.20)
     cad.basin(2.80, 4.20, 1.10, 0.45)
     cad.rect(2.75, 5.35, 1.05, 0.55, fill="white", stroke=INK, sw=0.8)
     cad.text(3.27, 5.62, "душ", size=8, fill=DIM)
-    cad.wc(8.15, 6.45)
-    cad.basin(5.45, 6.45, 1.1, 0.45)
-    cad.rect(6.70, 6.45, 1.2, 0.70, fill="white", stroke=INK, sw=0.8)
-    cad.text(7.30, 6.80, "ванна", size=8, fill=DIM)
-    cad.rect(5.35, 4.95, 1.05, 1.10, fill="#e0ddd6", stroke=FURN_S, sw=0.7)
-    cad.text(5.87, 5.50, "ст.м.", size=8, fill=DIM)
+    cad.wc(8.15, 5.65)
+    cad.basin(6.65, 5.65, 1.1, 0.45)
+    cad.rect(6.70, 6.90, 1.2, 0.70, fill="white", stroke=INK, sw=0.8)
+    cad.text(7.30, 7.25, "ванна", size=8, fill=DIM)
+    cad.rect(7.55, 4.20, 1.05, 1.00, fill="#e0ddd6", stroke=FURN_S, sw=0.7)
+    cad.text(8.07, 4.70, "ст.м.", size=8, fill=DIM)
     # stair void
     cad.rect(6.70, 0.45, 2.10, 3.52, fill="#f6f2ea", stroke=INK, sw=1.0, extra='stroke-dasharray="5 3"')
     cad.line(6.70, 0.45, 8.80, 3.97, stroke=INK, sw=0.6)
     cad.line(8.80, 0.45, 6.70, 3.97, stroke=INK, sw=0.6)
     cad.text(7.75, 2.20, "ПРОЁМ", size=9, fill=DIM)
     cad.text(7.75, 1.75, "ЛЕСТНИЦЫ", size=9, fill=DIM)
-    # balcony north
-    cad.rect(0.20, 12.00, 4.88, 1.40, fill="none", stroke=INK, sw=1.1)
-    cad.line(0.20, 13.28, 5.08, 13.28, sw=1.4)
-    cad.text(2.64, 12.70, "БАЛКОН 4,88 × 1,40", size=9, fill=DIM)
-    cad.opening(1.50, 11.80, 1.80, 0.20)
-    cad.window_h(1.50, 11.80, 1.80, 0.20)
     cad.room_label(2.55, 2.10, "13", "Спальня 2", "18,0 м²")
     cad.room_label(1.35, 5.55, "11", "Гардероб", "4,8 м²")
     cad.room_label(3.85, 5.15, "12", "Мастер-с/у", "5,1 м²")
     cad.room_label(2.55, 9.55, "10", "Мастер-спальня", "27,3 м²")
-    cad.room_label(7.00, 4.55, "09", "Холл 2 эт.", "13,6 м²")
-    cad.room_label(7.00, 7.35, "15", "Ванная", "6,3 м²")
-    cad.room_label(7.00, 10.15, "14", "Спальня 3", "13,0 м²")
+    cad.room_label(7.05, 3.55, "09", "Холл 2 эт.", "14,8 м²")
+    cad.text(5.78, 7.15, "кор.", size=8, fill=DIM)
+    cad.room_label(7.55, 6.85, "15", "Ванная", "6,4 м²")
+    cad.room_label(7.00, 10.15, "14", "Спальня 3", "12,5 м²")
     cad.dim_h(0, 9, -0.85, "9,00")
     cad.dim_v(0, 12, -0.85, "12,00")
     cad.dim_v(0, 4.00, 9.55, "4,00")
@@ -531,103 +528,127 @@ def draw_floor2() -> str:
 
 
 def facade_south(cad: CAD, ox: float, oy: float) -> None:
-    """oy is ground line in meters of this local system."""
+    """С улицы: запад слева, восток справа. Белый куб, портал, бассейн, навес."""
     def X(v):
         return ox + v
     def Y(v):
         return oy + v
-    # ground
-    cad.line(X(-0.6), Y(0), X(9.6), Y(0), sw=1.4)
+    cad.line(X(-2.4), Y(0), X(14.0), Y(0), sw=1.4)
     cad.rect(X(0), Y(0), 9.0, 0.45, fill="#8d8a84", stroke=INK, sw=0.8)
-    cad.rect(X(0), Y(0.45), 9.0, 3.15, fill="#f2efe8", stroke=INK, sw=1.1)
-    cad.rect(X(0), Y(3.60), 9.0, 3.15, fill="#3d3d3d", stroke=INK, sw=1.1)
-    cad.rect(X(0), Y(6.75), 9.0, 0.60, fill="#2f2f2f", stroke=INK, sw=1.0)
-    # canopy
-    cad.rect(X(3.3), Y(2.55), 2.4, 0.12, fill=WOOD, stroke=INK, sw=0.8)
-    cad.line(X(3.3), Y(2.55), X(3.3), Y(2.15), sw=0.8)
-    cad.line(X(5.7), Y(2.55), X(5.7), Y(2.15), sw=0.8)
-    # openings
-    def win(x, y, w, h, fill="#9fb6c2"):
-        cad.rect(X(x), Y(y), w, h, fill=fill, stroke=INK, sw=0.9)
-        cad.line(X(x), Y(y + h / 2), X(x + w), Y(y + h / 2), stroke=INK, sw=0.4)
+    cad.rect(X(0), Y(0.45), 9.0, 6.30, fill="#f2efe8", stroke=INK, sw=1.1)
+    cad.rect(X(0), Y(6.75), 9.0, 0.60, fill="#2a2a2a", stroke=INK, sw=1.0)
+    cad.rect(X(1.4), Y(7.05), 6.2, 0.22, fill="#1c2830", stroke=INK, sw=0.4)
+    for i in range(5):
+        cad.line(X(1.4 + i * 1.24), Y(7.05), X(1.4 + i * 1.24), Y(7.27), stroke="#0e161c", sw=0.3)
+    # двухэтажная тёмная ниша + одноэтажный портал + дверь
+    cad.rect(X(3.35), Y(3.60), 2.30, 3.15, fill="#2c3036", stroke=INK, sw=0.8)
+    cad.rect(X(2.95), Y(0.45), 3.10, 3.15, fill="#2c3036", stroke=INK, sw=0.9)
+    cad.rect(X(3.85), Y(0.45), 1.20, 2.40, fill="#6b4a32", stroke=INK, sw=0.9)
+    def win(x, y, w, h):
+        cad.rect(X(x), Y(y), w, h, fill="#9fb6c2", stroke=INK, sw=0.9)
         cad.line(X(x + w / 2), Y(y), X(x + w / 2), Y(y + h), stroke=INK, sw=0.4)
-    win(0.70, 1.10, 1.80, 1.50)
-    cad.rect(X(3.70), Y(0.45), 1.10, 2.20, fill="#6b4a32", stroke=INK, sw=0.9)
-    win(6.40, 1.20, 1.40, 1.50)
-    win(6.30, 0.45, 1.20, 6.20, fill="#8aa7b5")  # stair slot
-    win(0.70, 4.40, 1.70, 1.45)
-    win(2.80, 4.40, 1.70, 1.45)
-    cad.text(X(4.5), Y(-0.55), "ЮЖНЫЙ ФАСАД  ·  улица", size=12, weight=600)
-    cad.dim_h(X(0), X(9), Y(-1.05), "9,00")
-    cad.dim_v(Y(0), Y(7.35), X(-0.7), "7,35")
-    cad.dim_v(Y(0), Y(0.45), X(9.55), "0,45")
-    cad.dim_v(Y(0.45), Y(3.60), X(9.55), "3,15")
-    cad.dim_v(Y(3.60), Y(6.75), X(9.55), "3,15")
-    cad.dim_v(Y(6.75), Y(7.35), X(9.55), "0,60")
+    win(0.55, 1.15, 1.35, 1.45)
+    win(0.55, 4.35, 1.35, 1.45)
+    win(6.55, 4.35, 1.35, 1.45)
+    win(7.45, 1.25, 0.90, 1.30)
+    # бассейн 6 м по фронту, слева; настил
+    cad.rect(X(-2.05), Y(-0.10), 6.00, 0.10, fill="#6aa0b8", stroke="#4d7a8c", sw=0.6)
+    cad.rect(X(-2.05), Y(0.00), 6.00, 0.04, fill=WOOD, stroke="none")
+    cad.text(X(0.95), Y(-0.42), "бассейн 6×3", size=8, fill=DIM)
+    # навес справа, зазор 1,50
+    cad.rect(X(10.50), Y(0.0), 3.20, 2.45, fill="none", stroke=INK, sw=1.1)
+    cad.line(X(10.50), Y(2.45), X(13.70), Y(2.45), sw=1.3)
+    cad.text(X(12.10), Y(1.15), "навес", size=8, fill=DIM)
+    cad.dim_h(X(9.0), X(10.50), Y(2.85), "1,50")
+    cad.text(X(4.5), Y(-0.72), "ЮЖНЫЙ ФАСАД  ·  улица", size=12, weight=600)
+    cad.dim_h(X(0), X(9), Y(-1.70), "9,00")
+    cad.dim_v(Y(0), Y(7.35), X(-2.55), "7,35")
+    cad.dim_v(Y(0), Y(0.45), X(14.15), "0,45")
+    cad.dim_v(Y(0.45), Y(3.60), X(14.15), "3,15")
+    cad.dim_v(Y(3.60), Y(6.75), X(14.15), "3,15")
+    cad.dim_v(Y(6.75), Y(7.35), X(14.15), "0,60")
 
 
 def facade_north(cad: CAD, ox, oy) -> None:
-    def X(v):
-        return ox + v
+    """Из сада смотрим на юг: восток слева, запад справа — как на рис. 3."""
+    def X(x_plan):
+        return ox + (9.0 - x_plan)
+    def Xl(x_plan, w):
+        return ox + (9.0 - x_plan - w)
     def Y(v):
         return oy + v
-    cad.line(X(-0.6), Y(0), X(9.6), Y(0), sw=1.4)
-    cad.rect(X(0), Y(0), 9.0, 0.45, fill="#8d8a84", stroke=INK, sw=0.8)
-    cad.rect(X(0), Y(0.45), 9.0, 3.15, fill="#f2efe8", stroke=INK, sw=1.1)
-    cad.rect(X(0), Y(3.60), 9.0, 3.15, fill="#3d3d3d", stroke=INK, sw=1.1)
-    cad.rect(X(0), Y(6.75), 9.0, 0.60, fill="#2f2f2f", stroke=INK, sw=1.0)
-    cad.rect(X(0.0), Y(0.20), 9.0, 0.12, fill=WOOD, stroke=INK, sw=0.6)  # terrace edge
-    def win(x, y, w, h, fill="#9fb6c2"):
-        cad.rect(X(x), Y(y), w, h, fill=fill, stroke=INK, sw=0.9)
-        cad.line(X(x + w / 3), Y(y), X(x + w / 3), Y(y + h), stroke=INK, sw=0.4)
-        cad.line(X(x + 2 * w / 3), Y(y), X(x + 2 * w / 3), Y(y + h), stroke=INK, sw=0.4)
-    win(0.50, 0.55, 4.20, 2.70, "#8aa7b5")
-    win(5.50, 1.20, 2.90, 1.55)
-    win(0.50, 4.20, 4.20, 2.20, "#8aa7b5")
-    win(5.60, 4.50, 2.70, 1.70)
-    cad.rect(X(0.20), Y(3.55), 4.90, 0.12, fill=WOOD, stroke=INK, sw=0.7)
-    cad.line(X(0.20), Y(3.55), X(0.20), Y(4.85), sw=0.7)
-    cad.line(X(5.10), Y(3.55), X(5.10), Y(4.85), sw=0.7)
-    cad.line(X(0.20), Y(4.85), X(5.10), Y(4.85), sw=1.0)
-    cad.text(X(4.5), Y(-0.55), "СЕВЕРНЫЙ ФАСАД  ·  сад", size=12, weight=600)
+    cad.line(Xl(13.90, 0), Y(0), X(-0.4), Y(0), sw=1.4)
+    cad.rect(Xl(0, 9.0), Y(0), 9.0, 0.45, fill="#8d8a84", stroke=INK, sw=0.8)
+    cad.rect(Xl(0, 9.0), Y(0.45), 9.0, 6.30, fill="#f2efe8", stroke=INK, sw=1.1)
+    cad.rect(Xl(0, 9.0), Y(6.75), 9.0, 0.60, fill="#2a2a2a", stroke=INK, sw=1.0)
+    cad.rect(Xl(1.4, 6.2), Y(7.05), 6.2, 0.22, fill="#1c2830", stroke=INK, sw=0.4)
+    # терраса на всю ширину 9 м
+    cad.rect(Xl(0, 9.0), Y(0.16), 9.0, 0.16, fill=WOOD, stroke=INK, sw=0.6)
+    cad.rect(Xl(0, 9.0), Y(3.55), 9.0, 0.14, fill="#2c3036", stroke=INK, sw=0.7)
+    def win(x, y, w, h, bars=1):
+        cad.rect(Xl(x, w), Y(y), w, h, fill="#8aa7b5", stroke=INK, sw=0.9)
+        for i in range(1, bars):
+            xx = Xl(x, w) + w * i / bars
+            cad.line(xx, Y(y), xx, Y(y + h), stroke=INK, sw=0.4)
+    win(0.35, 0.55, 4.70, 2.70, 2)
+    cad.rect(Xl(4.90, 0.55), Y(0.55), 0.55, 2.70, fill="#2c3036", stroke=INK, sw=0.7)
+    win(5.45, 0.55, 3.20, 2.70, 2)
+    win(0.70, 4.25, 1.60, 1.50)
+    win(3.70, 4.25, 1.60, 1.50)
+    win(6.50, 4.25, 1.60, 1.50)
+    # навес восточный = слева, зазор 1,50
+    cad.rect(Xl(10.50, 3.20), Y(0.0), 3.20, 2.45, fill="none", stroke=INK, sw=1.1)
+    cad.line(Xl(10.50, 3.20), Y(2.45), Xl(10.50, 0), Y(2.45), sw=1.3)
+    cad.text((Xl(10.50, 3.20) + Xl(10.50, 0)) / 2, Y(1.15), "навес", size=8, fill=DIM)
+    cad.dim_h(Xl(10.50, 3.20) + 3.20, Xl(9.0, 0), Y(2.85), "1,50")
+    cad.text(Xl(0, 9.0) + 4.5, Y(-0.72), "СЕВЕРНЫЙ ФАСАД  ·  сад", size=12, weight=600)
 
 
 def facade_side(cad: CAD, ox, oy, title: str, is_east=True) -> None:
-    def X(v):
-        return ox + v
+    """Восток: юг слева. Запад: север слева (вид на фасад)."""
+    depth = 12.0
+    def X(y_plan, w=0):
+        if is_east:
+            return ox + y_plan
+        return ox + (depth - y_plan - w)
     def Y(v):
         return oy + v
-    cad.line(X(-0.5), Y(0), X(12.6), Y(0), sw=1.4)
-    cad.rect(X(0), Y(0), 12.0, 0.45, fill="#8d8a84", stroke=INK, sw=0.8)
-    cad.rect(X(0), Y(0.45), 12.0, 3.15, fill="#f2efe8", stroke=INK, sw=1.1)
-    cad.rect(X(0), Y(3.60), 12.0, 3.15, fill="#3d3d3d", stroke=INK, sw=1.1)
-    cad.rect(X(0), Y(6.75), 12.0, 0.60, fill="#2f2f2f", stroke=INK, sw=1.0)
-    def win(x, y, w, h):
-        cad.rect(X(x), Y(y), w, h, fill="#9fb6c2", stroke=INK, sw=0.9)
+    cad.line(ox - 0.5, Y(0), ox + depth + 0.8, Y(0), sw=1.4)
+    cad.rect(X(0, depth) if not is_east else X(0), Y(0), 12.0, 0.45, fill="#8d8a84", stroke=INK, sw=0.8)
+    cad.rect(X(0, depth) if not is_east else X(0), Y(0.45), 12.0, 6.30, fill="#f2efe8", stroke=INK, sw=1.1)
+    cad.rect(X(0, depth) if not is_east else X(0), Y(6.75), 12.0, 0.60, fill="#2a2a2a", stroke=INK, sw=1.0)
+    def win(y, z, w, h):
+        cad.rect(X(y, w), Y(z), w, h, fill="#9fb6c2", stroke=INK, sw=0.9)
     if is_east:
-        win(1.20, 1.20, 1.80, 1.50)
-        win(8.20, 1.10, 2.40, 1.60)
-        win(0.70, 0.45, 2.40, 6.20)
-        win(6.50, 4.40, 1.30, 1.40)
-        win(9.00, 4.40, 2.20, 1.55)
-        cad.rect(X(6.0), Y(0), 0.12, 2.4, fill="none", stroke=INK, sw=0.7)  # carport post hint
+        win(1.40, 1.20, 1.10, 1.40)
+        win(1.40, 4.35, 1.10, 1.40)
+        win(8.40, 1.15, 1.40, 1.50)
+        win(9.00, 4.35, 1.40, 1.40)
+        cad.rect(X(2.00), Y(0), 6.00, 2.45, fill="none", stroke=INK, sw=1.1)
+        cad.line(X(2.00), Y(2.45), X(8.00), Y(2.45), sw=1.3)
+        cad.text(X(5.00), Y(1.20), "навес 3,2×6", size=9, fill=DIM)
+        cad.text(X(5.00), Y(0.72), "отдельно, зазор 1,50", size=8, fill=DIM)
+        cad.rect(X(12.00), Y(0.18), 0.35, 0.14, fill=WOOD, stroke=INK, sw=0.5)
+        cad.text(X(11.2), Y(-0.42), "терраса", size=8, fill=DIM)
     else:
-        win(4.40, 1.00, 2.20, 1.80)
+        win(0.70, 4.35, 1.60, 1.40)
+        win(4.40, 1.15, 2.20, 1.50)
+        win(7.20, 4.20, 2.80, 2.00)
         win(8.40, 0.70, 2.60, 2.40)
-        win(0.70, 4.40, 1.60, 1.45)
-        win(7.20, 4.20, 2.80, 2.20)
-    cad.text(X(6.0), Y(-0.55), title, size=12, weight=600)
-    cad.dim_h(X(0), X(12), Y(-1.05), "12,00")
+        cad.rect(X(0.0, 3.0), Y(-0.08), 3.0, 0.08, fill="#6aa0b8", stroke="#4d7a8c", sw=0.6)
+        cad.text(X(1.5, 0), Y(-0.42), "бассейн", size=8, fill=DIM)
+    cad.text(ox + 6.0, Y(-0.72), title, size=12, weight=600)
+    cad.dim_h(ox, ox + 12, Y(-1.65), "12,00")
 
 
 def draw_elevations() -> str:
-    cad = CAD(1120, 1000, 30, 85, 90)
-    facade_south(cad, 0.4, 15.8)
-    facade_north(cad, 15.6, 15.8)
-    facade_side(cad, 0.4, 2.2, "ВОСТОЧНЫЙ ФАСАД  ·  проезд", True)
-    facade_side(cad, 16.6, 2.2, "ЗАПАДНЫЙ ФАСАД  ·  проход", False)
-    cad.scalebar(21.2, 12.6, 4)
-    cad.north(13.2, 12.8, 1.15)
+    cad = CAD(1180, 1020, 28, 95, 100)
+    facade_south(cad, 3.4, 16.6)
+    facade_north(cad, 24.2, 16.6)
+    facade_side(cad, 0.6, 2.4, "ВОСТОЧНЫЙ ФАСАД  ·  проезд", True)
+    facade_side(cad, 18.4, 2.4, "ЗАПАДНЫЙ ФАСАД  ·  проход", False)
+    cad.scalebar(32.4, 13.2, 4)
+    cad.north(16.8, 13.4, 1.15)
     return cad.finish("Фасады", "А-04", "М 1:100")
 
 
@@ -646,7 +667,6 @@ def draw_section() -> str:
     cad.rect(11.80, 0.45, 0.20, 6.30, fill=WALL, stroke="none")
     cad.rect(0.00, 3.40, 12.00, 0.20, fill=WALL, stroke="none")
     cad.rect(0.00, 6.55, 12.00, 0.20, fill=WALL, stroke="none")
-    cad.rect(0.00, 6.75, 12.00, 0.60, fill="#2f2f2f", stroke=INK, sw=0.8)
     # L1: office | living
     cad.rect(3.68, 0.45, 0.12, 2.95, fill=WALL, stroke="none")
     cad.rect(0.20, 0.45, 3.48, 2.95, fill="#efe8dc", stroke="none", opacity=0.55)
@@ -661,15 +681,12 @@ def draw_section() -> str:
     cad.rect(0.00, 1.10, 0.20, 1.50, fill=GLASS, stroke=INK, sw=0.7)
     cad.rect(0.00, 4.40, 0.20, 1.45, fill=GLASS, stroke=INK, sw=0.7)
     cad.rect(11.80, 0.55, 0.20, 2.70, fill=GLASS, stroke=INK, sw=0.7)
-    cad.rect(11.80, 4.20, 0.20, 2.20, fill=GLASS, stroke=INK, sw=0.7)
-    # terrace + balcony
+    cad.rect(11.80, 4.20, 0.20, 1.50, fill=GLASS, stroke=INK, sw=0.7)
+    cad.rect(0.00, 6.75, 12.00, 0.60, fill="#2a2a2a", stroke=INK, sw=0.8)
+    cad.rect(2.5, 7.08, 7.0, 0.18, fill="#1c2830", stroke=INK, sw=0.4)
     cad.rect(12.00, 0.32, 4.00, 0.12, fill=WOOD, stroke=INK, sw=0.8)
     cad.rect(12.00, 0.00, 0.15, 0.32, fill="#7a7a7a", stroke=INK, sw=0.6)
     cad.rect(15.85, 0.00, 0.15, 0.32, fill="#7a7a7a", stroke=INK, sw=0.6)
-    cad.rect(12.00, 3.48, 1.40, 0.12, fill=WOOD, stroke=INK, sw=0.7)
-    cad.line(12.00, 3.48, 12.00, 4.55, sw=0.8)
-    cad.line(13.40, 3.48, 13.40, 4.55, sw=0.8)
-    cad.line(12.00, 4.55, 13.40, 4.55, sw=1.1)
 
     def level(z, name):
         cad.line(-4.7, z, -0.3, z, stroke="#8b2942", sw=0.8)
@@ -686,8 +703,8 @@ def draw_section() -> str:
     cad.text(1.9, 5.05, "13 Спальня 2", size=11)
     cad.text(5.05, 5.05, "11 Гардероб", size=10)
     cad.text(8.7, 5.05, "10 Мастер-спальня", size=11)
-    cad.text(14.0, 0.85, "терраса", size=10, fill=DIM)
-    cad.text(12.7, 4.85, "балкон", size=9, fill=DIM)
+    cad.text(14.0, 0.85, "терраса 9×4", size=10, fill=DIM)
+    cad.text(6.0, 7.55, "ФЭМ", size=9, fill=DIM)
     cad.text(6.0, -0.55, "юг", size=10, fill=DIM)
     cad.text(11.5, -0.55, "север", size=10, fill=DIM)
     cad.dim_h(0, 12, 8.35, "12,00")
@@ -727,13 +744,24 @@ def draw_axon() -> str:
         face([iso(x, y, z0), iso(x + w, y, z0), iso(x + w, y, z1), iso(x, y, z1)], fill_s)
         # east
         face([iso(x + w, y, z0), iso(x + w, y + d, z0), iso(x + w, y + d, z1), iso(x + w, y, z1)], fill_e)
-    box(3, 6, 9, 12, 0, 3.6, "#f2efe8", "#e6e0d6", "#d4cfc4")
-    box(3, 6, 9, 12, 3.6, 7.35, "#4a4a4a", "#3a3a3a", "#2e2e2e")
-    cad.text(iso(8.5, 12, 8.2)[0], iso(8.5, 12, 8.2)[1], "H = 7,35 м", size=10, fill="white")
+    # бассейн слева у улицы
+    face([iso(0.95, 1.4, 0), iso(6.95, 1.4, 0), iso(6.95, 4.4, 0), iso(0.95, 4.4, 0)], "#6aa0b8", sw=0.5)
+    face([iso(0.95, 4.4, 0), iso(6.95, 4.4, 0), iso(6.95, 6.0, 0), iso(0.95, 6.0, 0)], WOOD, sw=0.5)
+    # белый двухэтажный куб
+    box(3, 6, 9, 12, 0, 7.35, "#f2efe8", "#ebe6dc", "#d8d2c6")
+    # тёмный портал юг
+    face([iso(6.0, 6, 0.45), iso(8.9, 6, 0.45), iso(8.9, 6, 3.6), iso(6.0, 6, 3.6)], "#2c3036")
+    # ФЭМ
+    face([iso(4.2, 7.5, 7.45), iso(10.8, 7.5, 7.45), iso(10.8, 16.5, 7.45), iso(4.2, 16.5, 7.45)], "#1c2830", sw=0.4)
+    # навес отдельно, зазор 1,5 м
+    box(13.5, 8.0, 3.2, 6.0, 0, 2.45, "#4a4a4a", "#5a5a5a", "#3a3a3a")
+    cad.text(iso(8.5, 12, 8.4)[0], iso(8.5, 12, 8.4)[1], "H = 7,35 м", size=10, fill=DIM)
     cad.text(iso(4, -3.2)[0], iso(4, -3.2)[1], "улица", size=11, fill=DIM)
     cad.text(iso(8, 28)[0], iso(8, 28)[1], "сад 17 м", size=11, fill=DIM)
+    cad.text(iso(3.8, 2.8)[0], iso(3.8, 2.8)[1], "бассейн", size=9, fill=DIM)
+    cad.text(iso(15.0, 10.5)[0], iso(15.0, 10.5)[1], "навес", size=9, fill=DIM)
     cad.scalebar(0.2, 24.5, 5)
-    cad.north(22.0, 4.0, 1.4)
+    cad.north(20.5, 0.6, 1.4)
     return cad.finish("Аксонометрия участка и объёма", "А-06", "М 1:200")
 
 
@@ -810,7 +838,7 @@ HTML = """<!DOCTYPE html>
 <header class="cover">
   <div class="kicker">Концептуальный архитектурный проект</div>
   <h1>LINEA 9×12</h1>
-  <p class="lead">Современный двухэтажный дом 9 × 12 м на участке 17 × 35 м. Открытый первый этаж к саду, приватный второй, плоская кровля, светлая штукатурка и тёмный объём второго этажа.</p>
+  <p class="lead">Современный двухэтажный дом 9 × 12 м на участке 17 × 35 м. Белый куб, тёмный портал входа, плоская кровля с ФЭМ. Первый этаж открыт в сад, второй — приватный, без балкона.</p>
   <div class="meta">
     <div><b>9 × 12 м</b><span>пятно застройки</span></div>
     <div><b>216 м²</b><span>общая площадь двух этажей</span></div>
@@ -847,7 +875,7 @@ HTML = """<!DOCTYPE html>
         <li>Два полных этажа, плоская кровля с парапетом.</li>
         <li>Белый двухэтажный объём, тёмный портал входа, плоская кровля с ФЭМ.</li>
         <li>Терраса 9 × 4 м к саду, бассейн 6 × 3 м в палисаднике слева.</li>
-        <li>Навес для автомобиля вдоль восточной границы.</li>
+        <li>Отдельно стоящий навес 3,2 × 6 м с зазором 1,5 м от восточной стены.</li>
       </ul>
     </div>
     <div>
@@ -855,7 +883,7 @@ HTML = """<!DOCTYPE html>
       <ul class="plain">
         <li>1 этаж — общественный: вход, кабинет, кухня-гостиная в сад.</li>
         <li>2 этаж — спальный: мастер-блок к саду, две детские, общая ванная.</li>
-        <li>Бассейн 6 × 3 м слева перед домом, крытый навес 3,5 × 6 м вдоль восточной стены.</li>
+        <li>Бассейн 6 × 3 м слева перед домом, навес 3,2 × 6 м справа с зазором 1,5 м.</li>
         <li>Север участка — газон, мангал, огород, игра.</li>
       </ul>
     </div>
@@ -875,9 +903,8 @@ HTML = """<!DOCTYPE html>
       <tr><td>Общая площадь этажей (брутто)</td><td class="num">216 м²</td></tr>
       <tr><td>Полезная площадь помещений</td><td class="num">≈ 184 м²</td></tr>
       <tr><td>Жилая площадь</td><td class="num">≈ 108 м²</td></tr>
-      <tr><td>Терраса</td><td class="num">36 м²</td></tr>
-      <tr><td>Балкон мастер-спальни</td><td class="num">6,8 м²</td></tr>
-      <tr><td>Навес для автомобиля</td><td class="num">21 м²</td></tr>
+      <tr><td>Терраса (север, на всю ширину дома)</td><td class="num">9,00 × 4,00 = 36 м²</td></tr>
+      <tr><td>Навес для автомобиля (отдельно, зазор 1,50 м)</td><td class="num">3,20 × 6,00 = 19,2 м²</td></tr>
       <tr><td>Бассейн</td><td class="num">6,00 × 3,00 = 18 м²</td></tr>
       <tr><td>Высота этажа (пол–пол)</td><td class="num">3,15 м</td></tr>
       <tr><td>Высота помещений в чистоте</td><td class="num">2,80 м</td></tr>
@@ -896,7 +923,7 @@ HTML = """<!DOCTYPE html>
     <thead><tr><th>Зона участка</th><th>Размер</th><th>Назначение</th></tr></thead>
     <tbody>
       <tr><td>Палисадник / въезд</td><td>17 × 6 м</td><td>Бассейн 6 × 3 м слева, дорожка к входу, проезд справа</td></tr>
-      <tr><td>Проезд восточный</td><td>5 × 18 м</td><td>Навес 3,5 × 6 м, проход к саду, тепловой насос у котельной</td></tr>
+      <tr><td>Проезд восточный</td><td>5 × 18 м</td><td>Навес 3,2 × 6 м с зазором 1,5 м от дома, проход к саду</td></tr>
       <tr><td>Проход западный</td><td>3 × 18 м</td><td>Пожарный проход, живая изгородь</td></tr>
       <tr><td>Дом</td><td>9 × 12 м</td><td>Двухэтажный объём</td></tr>
       <tr><td>Сад</td><td>17 × 17 м</td><td>Терраса, газон, мангал, огород, детская зона</td></tr>
@@ -906,18 +933,18 @@ HTML = """<!DOCTYPE html>
 
 <section id="l1">
   <h2>4. А-02 План 1 этажа</h2>
-  <p>Вход с юга в тамбур, далее холл с лестницей. Кабинет у улицы можно закрыть для работы или гостей. Гостиная 39 м² раскрыта на северную террасу и связана широким проёмом с кухней.</p>
+  <p>Вход с юга в тамбур, далее холл с лестницей. В кухню два пути: широкий проём 2,60 м из гостиной (основной) и дверь холл → кладовая → кухня (хозяйственный). Кабинет у улицы можно закрыть для работы или гостей.</p>
   <div class="sheet">L1_SVG</div>
   <table>
     <thead><tr><th>№</th><th>Помещение</th><th class="num">Площадь</th><th>Примечание</th></tr></thead>
     <tbody>
       <tr><td>01</td><td>Тамбур</td><td class="num">3,2 м²</td><td>Грязевая зона, шкаф для верхней одежды</td></tr>
-      <tr><td>02</td><td>Холл / лестница</td><td class="num">18,0 м²</td><td>L-образная лестница, витраж на восток</td></tr>
+      <tr><td>02</td><td>Холл / лестница</td><td class="num">18,0 м²</td><td>L-образная лестница, обычные окна на восток и юг</td></tr>
       <tr><td>03</td><td>Гостевой с/у</td><td class="num">2,8 м²</td><td>Унитаз, раковина</td></tr>
       <tr><td>04</td><td>Кабинет</td><td class="num">10,4 м²</td><td>Может работать как гостевая</td></tr>
-      <tr><td>05</td><td>Гостиная — столовая</td><td class="num">39,0 м²</td><td>Диван, стол на 8, выход на террасу</td></tr>
-      <tr><td>06</td><td>Кухня</td><td class="num">17,3 м²</td><td>Линейная + остров 2,4 м</td></tr>
-      <tr><td>07</td><td>Кладовая</td><td class="num">2,7 м²</td><td>Продукты, техника</td></tr>
+      <tr><td>05</td><td>Гостиная — столовая</td><td class="num">39,0 м²</td><td>Диван, стол на 8, выход на террасу, проём в кухню 2,60 м</td></tr>
+      <tr><td>06</td><td>Кухня</td><td class="num">17,3 м²</td><td>Линейная + остров; вход из гостиной и через кладовую</td></tr>
+      <tr><td>07</td><td>Кладовая</td><td class="num">2,7 м²</td><td>Двери из холла и из кухни</td></tr>
       <tr><td>08</td><td>Котельная / ИТП</td><td class="num">2,8 м²</td><td>Тепловой насос, ввод коммуникаций, выход наружу</td></tr>
     </tbody>
   </table>
@@ -925,25 +952,25 @@ HTML = """<!DOCTYPE html>
 
 <section id="l2">
   <h2>5. А-03 План 2 этажа</h2>
-  <p>Мастер-спальня 27 м² смотрит в сад, со своим санузлом и гардеробом. Две детские: южная к улице (с повышенной приватностью окон) и северная к саду. Общая ванная и постирочная в холле.</p>
+  <p>С лестницы попадаете в холл 09. Из холла четыре двери: спальня 2 (юг), мастер-спальня (запад), общая ванная и спальня 3 (север, в конце короткого коридора). Гардероб и мастер-с/у — только из мастер-спальни.</p>
   <div class="sheet">L2_SVG</div>
   <table>
     <thead><tr><th>№</th><th>Помещение</th><th class="num">Площадь</th><th>Примечание</th></tr></thead>
     <tbody>
-      <tr><td>09</td><td>Холл 2 этажа</td><td class="num">13,6 м²</td><td>Без площади проёма лестницы</td></tr>
-      <tr><td>10</td><td>Мастер-спальня</td><td class="num">27,3 м²</td><td>Выход на балкон 1,4 м</td></tr>
+      <tr><td>09</td><td>Холл 2 этажа</td><td class="num">14,8 м²</td><td>Лестница, коридор на север к спальне 3 и мастеру</td></tr>
+      <tr><td>10</td><td>Мастер-спальня</td><td class="num">27,3 м²</td><td>Окна в сад, без балкона</td></tr>
       <tr><td>11</td><td>Гардеробная</td><td class="num">4,8 м²</td><td>Из мастер-спальни</td></tr>
       <tr><td>12</td><td>Мастер-санузел</td><td class="num">5,1 м²</td><td>Душ, два умывальника, унитаз</td></tr>
       <tr><td>13</td><td>Спальня 2</td><td class="num">18,0 м²</td><td>Детская / гостевая, юг</td></tr>
-      <tr><td>14</td><td>Спальня 3</td><td class="num">13,0 м²</td><td>Детская, вид в сад</td></tr>
-      <tr><td>15</td><td>Ванная общая</td><td class="num">6,3 м²</td><td>Ванна, душ не обязателен, унитаз, раковина</td></tr>
+      <tr><td>14</td><td>Спальня 3</td><td class="num">12,5 м²</td><td>Детская, вид в сад, дверь из коридора</td></tr>
+      <tr><td>15</td><td>Ванная общая</td><td class="num">6,4 м²</td><td>Ванна, унитаз, раковина, дверь из коридора</td></tr>
     </tbody>
   </table>
 </section>
 
 <section id="facade">
   <h2>6. А-04 Фасады</h2>
-  <p>Юг — спокойный, с акцентом на вход и вертикаль лестницы. Север — максимально остеклённый, жизнь дома вынесена в сад. Восток — ритм окон и навес. Запад — более глухой, к соседу.</p>
+  <p>Все фасады — белый двухэтажный куб с тёмным парапетом и ФЭМ. Юг: тёмный портал и бассейн слева, навес справа. Север: раздвижное остекление 1 этажа на всю ширину 9 м, три окна 2 этажа, терраса, навес слева. Восток и запад — пробитые окна, без витража лестницы.</p>
   <div class="sheet">EL_SVG</div>
 </section>
 
@@ -963,7 +990,7 @@ HTML = """<!DOCTYPE html>
   <div class="grid2">
     <figure>
       <img src="images/02-exterior-garden.jpg" alt="Сад и терраса"/>
-      <figcaption class="cap">Рис. 3. Северный фасад, терраса и сад в глубину участка.</figcaption>
+      <figcaption class="cap">Рис. 3. Северный фасад из сада: терраса 9 × 4 м, навес слева с зазором, три окна 2 этажа.</figcaption>
     </figure>
     <figure>
       <img src="images/05-exterior-twilight.jpg" alt="Вечерний фасад"/>
@@ -971,11 +998,11 @@ HTML = """<!DOCTYPE html>
     </figure>
     <figure>
       <img src="images/08-exterior-east.jpg" alt="Восточный фасад"/>
-      <figcaption class="cap">Рис. 5. Восточный фасад и навес со стороны проезда.</figcaption>
+      <figcaption class="cap">Рис. 5. Вид с востока: навес, зазор 1,5 м и белая стена с пробитыми окнами.</figcaption>
     </figure>
     <figure>
       <img src="images/04-interior-living.jpg" alt="Гостиная"/>
-      <figcaption class="cap">Рис. 6. Гостиная 1 этажа, вид к саду. Высота 2,80 м.</figcaption>
+      <figcaption class="cap">Рис. 6. Гостиная, вид к саду. Лестница в отдельном холле, не в этом зале.</figcaption>
     </figure>
     <figure>
       <img src="images/06-interior-kitchen.jpg" alt="Кухня"/>
@@ -983,7 +1010,7 @@ HTML = """<!DOCTYPE html>
     </figure>
     <figure>
       <img src="images/07-interior-bedroom.jpg" alt="Мастер-спальня"/>
-      <figcaption class="cap">Рис. 8. Мастер-спальня 2 этажа с выходом на балкон к саду.</figcaption>
+      <figcaption class="cap">Рис. 8. Мастер-спальня 2 этажа, окна в сад, без балкона.</figcaption>
     </figure>
   </div>
 </section>

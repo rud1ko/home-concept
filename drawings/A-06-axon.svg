@@ -13,15 +13,21 @@
 <polygon points="254.80,501.76 514.00,501.76 660.08,374.27 400.88,374.27" fill="#b8c8aa" stroke="#1a1a1a" stroke-width="0.5"/>
 <polygon points="296.40,501.76 440.40,501.76 475.60,471.04 331.60,471.04" fill="#c4a574" stroke="#1a1a1a" stroke-width="1"/>
 <polygon points="285.20,640.00 355.60,640.00 514.00,501.76 443.60,501.76" fill="#d5cfc4" stroke="#1a1a1a" stroke-width="0.5"/>
-<polygon points="190.80,536.32 334.80,536.32 440.40,444.16 296.40,444.16" fill="#f2efe8" stroke="#1a1a1a" stroke-width="1"/>
-<polygon points="190.80,593.92 334.80,593.92 334.80,536.32 190.80,536.32" fill="#e6e0d6" stroke="#1a1a1a" stroke-width="1"/>
-<polygon points="334.80,593.92 440.40,501.76 440.40,444.16 334.80,536.32" fill="#d4cfc4" stroke="#1a1a1a" stroke-width="1"/>
-<polygon points="190.80,476.32 334.80,476.32 440.40,384.16 296.40,384.16" fill="#4a4a4a" stroke="#1a1a1a" stroke-width="1"/>
-<polygon points="190.80,536.32 334.80,536.32 334.80,476.32 190.80,476.32" fill="#3a3a3a" stroke="#1a1a1a" stroke-width="1"/>
-<polygon points="334.80,536.32 440.40,444.16 440.40,384.16 334.80,476.32" fill="#2e2e2e" stroke="#1a1a1a" stroke-width="1"/>
-<text x="331.60" y="416.64" font-size="10" fill="white" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">H = 7,35 м</text>
+<polygon points="117.52,629.25 213.52,629.25 239.92,606.21 143.92,606.21" fill="#6aa0b8" stroke="#1a1a1a" stroke-width="0.5"/>
+<polygon points="143.92,606.21 239.92,606.21 254.00,593.92 158.00,593.92" fill="#c4a574" stroke="#1a1a1a" stroke-width="0.5"/>
+<polygon points="190.80,476.32 334.80,476.32 440.40,384.16 296.40,384.16" fill="#f2efe8" stroke="#1a1a1a" stroke-width="1"/>
+<polygon points="190.80,593.92 334.80,593.92 334.80,476.32 190.80,476.32" fill="#ebe6dc" stroke="#1a1a1a" stroke-width="1"/>
+<polygon points="334.80,593.92 440.40,501.76 440.40,384.16 334.80,476.32" fill="#d8d2c6" stroke="#1a1a1a" stroke-width="1"/>
+<polygon points="238.80,586.72 285.20,586.72 285.20,536.32 238.80,536.32" fill="#2c3036" stroke="#1a1a1a" stroke-width="1"/>
+<polygon points="223.20,463.20 328.80,463.20 408.00,394.08 302.40,394.08" fill="#1c2830" stroke="#1a1a1a" stroke-width="0.4"/>
+<polygon points="376.40,539.36 427.60,539.36 480.40,493.28 429.20,493.28" fill="#4a4a4a" stroke="#1a1a1a" stroke-width="1"/>
+<polygon points="376.40,578.56 427.60,578.56 427.60,539.36 376.40,539.36" fill="#5a5a5a" stroke="#1a1a1a" stroke-width="1"/>
+<polygon points="427.60,578.56 480.40,532.48 480.40,493.28 427.60,539.36" fill="#3a3a3a" stroke="#1a1a1a" stroke-width="1"/>
+<text x="331.60" y="413.44" font-size="10" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">H = 7,35 м</text>
 <text x="125.84" y="664.58" font-size="11" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">улица</text>
 <text x="464.40" y="424.96" font-size="11" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">сад 17 м</text>
+<text x="175.44" y="618.50" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">бассейн</text>
+<text x="422.40" y="559.36" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">навес</text>
 <rect x="93.20" y="244.48" width="16.00" height="3.52" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0.7" opacity="1" />
 <rect x="109.20" y="244.48" width="16.00" height="3.52" fill="white" stroke="#1a1a1a" stroke-width="0.7" opacity="1" />
 <rect x="125.20" y="244.48" width="16.00" height="3.52" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="0.7" opacity="1" />
@@ -31,6 +37,6 @@
 <text x="93.20" y="252.48" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">0</text>
 <text x="173.20" y="252.48" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">5 м</text>
 <text x="133.20" y="240.32" font-size="9" fill="#3d3d3d" text-anchor="middle" font-weight="500" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">масштаб</text>
-<polygon points="442.00,553.60 435.73,579.36 442.00,572.64 448.27,579.36" fill="#1a1a1a" stroke="none" stroke-width="1"/>
-<text x="442.00" y="547.52" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="600" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">С</text>
+<polygon points="418.00,608.00 411.73,633.76 418.00,627.04 424.27,633.76" fill="#1a1a1a" stroke="none" stroke-width="1"/>
+<text x="418.00" y="601.92" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="600" font-family="IBM Plex Sans, Segoe UI, sans-serif" dominant-baseline="middle">С</text>
 </svg>
